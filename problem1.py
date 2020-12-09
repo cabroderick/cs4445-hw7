@@ -20,7 +20,7 @@ def Terms_and_Conditions():
     '''
     #****************************************
     #* CHANGE CODE HERE
-    Read_and_Agree = False  #if you have read and agree with the term above, change "False" to "True".
+    Read_and_Agree = True  #if you have read and agree with the term above, change "False" to "True".
     #****************************************
     return Read_and_Agree
 
@@ -106,8 +106,10 @@ class TicTacToe(BoardGame):
         '''
         #########################################
         ## INSERT YOUR CODE HERE
-
-
+        m = []
+        for i in range(len(s.b)):
+            m.append((i, (np.where(s.b[i] == 0)[0][0])))
+        print(m)
         #########################################
         return m
     
