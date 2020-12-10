@@ -106,10 +106,8 @@ class TicTacToe(BoardGame):
         '''
         #########################################
         ## INSERT YOUR CODE HERE
-        m = []
-        for i in range(len(s.b)):
-            m.append((i, (np.where(s.b[i] == 0)[0][0])))
-        print(m)
+        a = np.where(s.b == 0)
+        m = list(zip(a[0], a[1]))
         #########################################
         return m
     
@@ -141,17 +139,24 @@ class TicTacToe(BoardGame):
         #########################################
         ## INSERT YOUR CODE HERE
 
+        # check for draw
 
+        a = [0, 0, 0] # intitialize value to draw
 
         # check the 8 lines in the board to see if the game has ended.
+        a += np.fix(np.sum(s.b, axis=0)/3)
+        a += np.fix(np.sum(s.b, axis=1)/3)
 
-
+        e = np.sum(a)
+        e += np.fix(np.trace(s.b)/3)
+        e += np.fix(np.trace(np.fliplr(s.b))/3)
         # if the game has ended, return the game result 
 
-
-
-
-
+        if e==0:
+            if np.count_nonzero(s.b[0]) + np.count_nonzero(s.b[1]) + np.count_nonzero(s.b[2]) == 0:
+                return 0
+            else:
+                return None
 
         # if the game has not ended, return None
 
