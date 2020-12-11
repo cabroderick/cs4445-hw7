@@ -142,24 +142,24 @@ class TicTacToe(BoardGame):
         # check for draw
 
         a = [0, 0, 0] # intitialize value to draw
+        e = 0
 
-        # check the 8 lines in the board to see if the game has ended.
+        # check the 6 lines in the board to see if the game has ended.
         a += np.fix(np.sum(s.b, axis=0)/3)
         a += np.fix(np.sum(s.b, axis=1)/3)
-
         e = np.sum(a)
+
+        # check the diagonals
         e += np.fix(np.trace(s.b)/3)
         e += np.fix(np.trace(np.fliplr(s.b))/3)
-        # if the game has ended, return the game result 
 
         if e==0:
-            if np.count_nonzero(s.b[0]) + np.count_nonzero(s.b[1]) + np.count_nonzero(s.b[2]) == 0:
+            # if the game has ended, return the game result
+            if np.count_nonzero(s.b) == 9:
                 return 0
             else:
+                # if the game has not ended, return None
                 return None
-
-        # if the game has not ended, return None
-
         #########################################
         return e
     
