@@ -503,9 +503,9 @@ class MMNode(Node):
         valid_moves = g.get_move_state_pairs(self.s)
 
         # expand the node with one level of children nodes 
-        for move in valid_moves[0]:
+        for move in valid_moves:
             # for each next move m and game state s, create a child node
-            child = Node(self.s, self, move, [])
+            child = MMNode(s=move[1], p=self, c=[], m=move[0], v=None)
             # append the child node the child list of the current node 
             self.c.append(child)
 
