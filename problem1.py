@@ -254,9 +254,10 @@ class RandomPlayer(Player):
         ## INSERT YOUR CODE HERE
 
         # find all valid moves in the current game state
-
+        valid_moves = g.get_valid_moves(s)
         # randomly choose one valid move
-
+        move = valid_moves[np.random.randint(0, len(valid_moves))]
+        r, c = move[0], move[1]
 
         #########################################
         return r,c
