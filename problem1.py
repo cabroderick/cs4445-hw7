@@ -687,14 +687,13 @@ class MMNode(Node):
         ## INSERT YOUR CODE HERE
 
         # if the game in the current state has not ended yet 
-
+        if g.check_game(s=self.s) == None:
             #expand the current node by one-level of children nodes
-
+            self.expand(g)
             # recursion: for each child node, call build_tree() function 
             # to build a subtree rooted from each child node
-
-
-
+            for child in self.c:
+                child.build_tree(g)
         #########################################
 
 
@@ -853,12 +852,11 @@ class MMNode(Node):
         #########################################
         ## INSERT YOUR CODE HERE
         # (1) if the game has already ended, the value of the node is the game result 
-
-
-
-
-
+        if g.check_game(self.s) != None:
+            print()
         # (2) if the game has not ended yet: 
+        else:
+            print()
         #   (2.1)first compute values of all children nodes recursively by calling compute_v() in each child node
 
 
