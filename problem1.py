@@ -852,23 +852,23 @@ class MMNode(Node):
         #########################################
         ## INSERT YOUR CODE HERE
         # (1) if the game has already ended, the value of the node is the game result 
+        child_v_vals = []
         if g.check_game(self.s) != None:
-            print()
+            self.v = g.check_game(self.s)
+            return
         # (2) if the game has not ended yet: 
-        else:
-            print()
         #   (2.1)first compute values of all children nodes recursively by calling compute_v() in each child node
-
-
-
+        for child in self.c:
+            child.compute_v(g)
+            child_v_vals.append(child.v)
 
         #   (2.2) now the values of all the children nodes are computed, let's compute the value of the current node:
         #       (2.2.1) if it is X player's turn, the value of the current node is the max of all children node's values 
         #       (2.2.2) if it is O player's turn, the value of the current node is the min of all children node's values 
-
-
-
-
+        if self.s.x == 1: # X player's turn
+            self.v = np.max(child_v_vals)
+        if self.s.x == -1: # O player's turn
+            self.v = np.min(child_v_vals)
         #########################################
 
     ''' TEST: Now you can test the correctness of your code above by typing `nosetests -v test1.py:test_compute_v' in the terminal.  '''
