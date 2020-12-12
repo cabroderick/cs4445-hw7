@@ -899,7 +899,7 @@ class MiniMaxPlayer(Player):
     
             (3) Choose Next Move: the agent will choose the child node with the largest/smallest value as the next move.
                 if the MinMax player is the "X" player in the game, it will choose the largest value among children nodes. 
-                if the MinMax player is the "O" player in the game, it will choose the smallest value among children nodes. 
+                if the MinMax player is the "O" player in the game, it will choose the smallest value among children nodes.
     
            Inputs:
                 n: the current node of the search tree, assuming the values in all nodes are already computed.
@@ -938,11 +938,11 @@ class MiniMaxPlayer(Player):
         '''
         #########################################
         ## INSERT YOUR CODE HERE
-
-
-
-
-
+        v_vals = [node.v for node in n.c]
+        if n.s.x == 1:
+            r,c = n.c[np.argmax(v_vals)].m[0], n.c[np.argmax(v_vals)].m[1]
+        if n.s.x == -1:
+            r, c = n.c[np.argmin(v_vals)].m[0], n.c[np.argmin(v_vals)].m[1]
         #########################################
         return r,c
     
